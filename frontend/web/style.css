@@ -103,6 +103,9 @@ cursor: pointer;
 .cart a{
 	text-decoration: none;
 }
+#name-pro-add-cart{
+    color: red;
+}
 .inner-cart span:first-child{
 	position: relative;
 	font-size: 40px;
@@ -114,8 +117,8 @@ cursor: pointer;
     left: 37px;
     background-color: #4e69a2;
     border-radius: 20px;
-    width: 21px;
-    height: 21px;
+    width: 25px;
+    height: 25px;
     text-align: center;
     line-height: 22px;
     color: #fff;
@@ -501,7 +504,7 @@ overflow: hidden;
 .parent ul{
     padding: 0px;
     margin-top: 10px;
-    margin-left: -50px;
+    margin-left: -30px;
 }
 .parent ul li{
     float: left;
@@ -638,6 +641,11 @@ position: absolute;
 
 }
 .price .price-new{
+    color: #59a3df;
+    font-size: 16px;
+    padding: 2px 0px;
+}
+.price .price-not-salef {
     color: #59a3df;
     font-size: 16px;
     padding: 2px 0px;

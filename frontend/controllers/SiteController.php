@@ -12,6 +12,10 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Categories;
+use frontend\models\Products;
+use frontend\models\ImageProducts;
+use frontend\models\Sale;
 
 /**
  * Site controller
@@ -71,8 +75,19 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        return $this->render('index');
+    {   
+        $cat=new Categories();
+        $products=new Products();
+        $dataCat=$cat->getCatlevel();
+        $imgPro=new ImageProducts();
+        $sale=new Sale();
+        return $this->render('index',[
+             'dataCat' =>$dataCat,
+             'cat'     =>$cat,
+             'products'=>$products,
+             'imgPro'  =>$imgPro,
+             'sale'    =>$sale,
+            ]);
     }
 
     /**

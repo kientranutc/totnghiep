@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\Categorynews;
+use backend\models\News;
+
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\NewsSearch */
@@ -40,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         'checkboxOptions' => function($model, $key, $index, $column) {
 
-            return ['value' => $model->id,'id'=>"select".$model->id,'onchange'=>'check(this.value)'];
+            return ['value' => $model->id,'id'=>"select".$model->id,];
         },
         ],
         ['class' => 'yii\grid\SerialColumn'],
@@ -106,33 +108,24 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         ]); ?>
         <?php Pjax::end(); ?>
+        <?php 
+        $data= News::find()->count();
+        if($data>0)
+        {
+         ?>
         <div class="form-group">
           <div class="col-sm-10 col-offset-2">
                <?= Html::submitButton('xoá chọn',[ 'name'=>'xoachon', 'value' => 'xoachon','id'=>'deletenews', 'class' => 'btn btn-default disabled','data-pjax' => 0,'data' => [
             'confirm' => 'Bạn có muốn xóa không?',
-          
-        ],]) ?>
+              ],]) ?>
+            </div>
           </div>
-      </div>
+          <?php }
+
+           ?>
+  
   </form>
 </div>
-<script>
-     
-    function check(val)
-    {
-      if($("input[name='selection[]']").is(':checked'))
-      {
 
-       $('#deletenews').removeClass('disabled');
-
-      }
-      else
-      {
-        
-          $('#deletenews').addClass('disabled');
-      
-      }
-    }
-</script>
 
 

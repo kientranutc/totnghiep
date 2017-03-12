@@ -63,7 +63,7 @@ class CategorynewsController extends Controller
      */
     public function actionCreate()
     {  
-        date_default_timezone_set("Asia/Ho_Chi_Minh");
+       date_default_timezone_set("Asia/Ho_Chi_Minh");
        $create_at=date("Y-m-d h:i:s");
         $model = new Categorynews();
         $model->created_at=$create_at;

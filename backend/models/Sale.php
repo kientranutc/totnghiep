@@ -44,4 +44,19 @@ class Sale extends \yii\db\ActiveRecord
             'sale_sapo' => 'Sale Sapo',
         ];
     }
+   /*
+   * get all data table sale
+   * @return array $datasale
+   */
+    public function getall()
+    {
+        $datasale=Sale::find()->asArray()->all();
+        return $datasale;
+    }
+
+    public function getname($id)
+    {
+    $datasale=Sale::findOne(['id'=>$id]);
+    return    $datasale;
+    }
 }

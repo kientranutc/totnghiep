@@ -11,7 +11,6 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 AppAsset::register($this);
 $Url = str_replace("/backend", "", Yii::$app->urlManager->baseUrl);
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ $Url = str_replace("/backend", "", Yii::$app->urlManager->baseUrl);
 <?php 
 if(Yii::$app->user->isGuest)
 {
-Yii::$app->user->logout();
+    Yii::$app->user->logout();
    return Yii::$app->getResponse()->redirect(['/site/login']);
 }
 ?>
@@ -43,9 +42,10 @@ Yii::$app->user->logout();
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
+
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        [ 'label' => '<span class="glyphicon glyphicon-bell"></span> <span id="notifcation">1</span>','id'=>'noti', 'url' => ['/site/index'], ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -62,17 +62,23 @@ Yii::$app->user->logout();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
+         'encodeLabels' => false,
     ]);
     NavBar::end();
     ?>
-
-    <div class="container">
+<div class="wrapper">
+ 
+  <div class="right table-responsive">
+     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
+  </div>
+</div>
+   
 </div>
 
 
@@ -97,7 +103,50 @@ Yii::$app->user->logout();
       </div>
     </div>
   </div>
- 
+
+<div class="modal fade" id="imagecat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 900px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Loại sản phẩm</h4>
+        </div>
+        <div class="modal-body">
+          <iframe  width="100%" height="550" frameborder="0" src="<?php echo $Url ?>/filemanager/dialog.php?type=1&field_id=cat_image">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imageproduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 900px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Loại sản phẩm</h4>
+        </div>
+        <div class="modal-body">
+          <iframe  width="100%" height="550" frameborder="0" src="<?php echo $Url ?>/filemanager/dialog.php?type=1&field_id=hidden-product">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="slideshow_img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 900px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Ảnh slideshow</h4>
+        </div>
+        <div class="modal-body">
+          <iframe  width="100%" height="550" frameborder="0" src="<?php echo $Url ?>/filemanager/dialog.php?type=1&field_id=image_slideshow">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php $this->endBody() ?>
 </body>

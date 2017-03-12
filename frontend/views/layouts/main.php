@@ -9,6 +9,11 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\widgets\category;
+use frontend\widgets\hotproducts;
+use frontend\widgets\slide;
+use frontend\widgets\newss;
+use frontend\widgets\cart;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +29,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
+ <input type="hidden" name="_csrf" id="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 <header id="header">
         <div id="hot-line">
           <div class="container">
@@ -56,7 +61,7 @@ AppAsset::register($this);
             <div class="col-md-3">
               <div class="logo">
                 <a href="#">
-                  <img src="image/logo.png" alt="">
+                  <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/logo.png" alt="">
                 </a>
               </div>
             </div>
@@ -76,17 +81,7 @@ AppAsset::register($this);
              </div>
            </div>
            <div class="col-md-2">
-            <div class="cart">
-              <a href="#">
-                <span class="inner-cart">
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span class="total-cart">
-                    0
-                  </span>
-                </span>
-                <span>Giỏ hàng</span>
-              </a>
-            </div>
+        <?=cart::widget()?>
           </div>
         </div>
       </div>
@@ -96,165 +91,7 @@ AppAsset::register($this);
            <div class="col-md-3">
              <div class="menu-left">
                <a href=""> <span class="glyphicon glyphicon-home"></span></a> <span>Danh mục sản phẩm</span> <span class="glyphicon glyphicon-triangle-bottom"></span>
-               <div class="submenu">
-                <ul>
-                  <li><a href=""><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại</a>
-
-                   <ul class="sub1">
-                     <div class="sub-content">
-                       <div class="sub-title">
-                         <h3>Hãng sản xuất</h3>
-                       </div>
-                       <div class="row">
-
-                        <div class="col-md-3">
-                          <ul class="colmenu">
-                           <li><a href="">a</a></li>
-                           <li><a href="">a</a></li>
-                           <li><a href="">a</a></li>
-                           <li><a href="">a</a></li>
-                           <li><a href="">a</a></li> 
-                         </ul>
-                       </div>
-                       <div class="col-md-3">
-                        <ul class="colmenu">
-                         <li><a href="">a</a></li>
-                         <li><a href="">a</a></li>
-                         <li><a href="">a</a></li>
-                         <li><a href="">a</a></li>
-                         <li><a href="">a</a></li> 
-
-                       </ul>
-                     </div>
-                     <div class="col-md-6">
-
-                       <div class="colmenu-logo">
-                         <img src="image/phone.png" alt="">
-                       </div>
-                     </div>
-
-                   </div>
-
-                 </div>
-
-               </ul>
-             </li>
-             <li><a href=""><i class="fa fa-tablet" aria-hidden="true"></i> Tablet</a>
-               <ul class="sub1">
-                 <div class="sub-content">
-                   <div class="sub-title">
-                     <h3>Hãng sản xuất</h3>
-                   </div>
-                   <div class="row">
-
-                    <div class="col-md-3">
-                      <ul class="colmenu">
-                       <li><a href="">a</a></li>
-                       <li><a href="">a</a></li>
-                       <li><a href="">a</a></li>
-                       <li><a href="">a</a></li>
-                       <li><a href="">a</a></li> 
-                     </ul>
-                   </div>
-                   <div class="col-md-3">
-                    <ul class="colmenu">
-                     <li><a href="">a</a></li>
-                     <li><a href="">a</a></li>
-                     <li><a href="">a</a></li>
-                     <li><a href="">a</a></li>
-                     <li><a href="">a</a></li> 
-                   </ul>
-                 </div>
-                 <div class="col-md-6">
-
-                   <div class="colmenu-logo">
-                     <img src="image/tablet.png" alt="">
-                   </div>
-                 </div>
-
-               </div>
-
-             </div>
-           </ul>
-         </li>
-         <li><a href=""><i class="fa fa-laptop" aria-hidden="true"></i> Laptop</a>
-           <ul class="sub1">
-            <div class="sub-content">
-             <div class="sub-title">
-               <h3>Hãng sản xuất</h3>
-             </div>
-             <div class="row">
-
-              <div class="col-md-3">
-                <ul class="colmenu">
-                 <li><a href="">a</a></li>
-                 <li><a href="">a</a></li>
-                 <li><a href="">a</a></li>
-                 <li><a href="">a</a></li>
-                 <li><a href="">a</a></li> 
-               </ul>
-             </div>
-             <div class="col-md-3">
-              <ul class="colmenu">
-               <li><a href="">a</a></li>
-               <li><a href="">a</a></li>
-               <li><a href="">a</a></li>
-               <li><a href="">a</a></li>
-               <li><a href="">a</a></li> 
-             </ul>
-           </div>
-           <div class="col-md-6">
-
-             <div class="colmenu-logo">
-               <img src="image/laptop.png" alt="">
-             </div>
-           </div>
-
-
-         </div>
-
-       </div>
-     </ul>
-   </li>
-   <li><a href=""><i class="fa fa-usb" aria-hidden="true"></i> Linh kiện</a>
-    <ul class="sub1">
-      <div class="sub-content">
-       <div class="sub-title">
-         <h3>Hãng sản xuất</h3>
-       </div>
-       <div class="row">
-
-        <div class="col-md-4">
-          <ul class="colmenu">
-           <li><a href="">a</a></li>
-           <li><a href="">a</a></li>
-           <li><a href="">a</a></li>
-           <li><a href="">a</a></li>
-           <li><a href="">a</a></li> 
-         </ul>
-       </div>
-       <div class="col-md-4">
-        <ul class="colmenu">
-         <li><a href="">a</a></li>
-         <li><a href="">a</a></li>
-         <li><a href="">a</a></li>
-         <li><a href="">a</a></li>
-         <li><a href="">a</a></li> 
-       </ul>
-     </div>
-
-   </div>
-
- </div>
-</ul>
-</li>
-<li><a href=""><i class="fa fa-laptop" aria-hidden="true"></i> Laptop</a>
-</li>
-<li><a href=""><i class="fa fa-laptop" aria-hidden="true"></i> Laptop</a>
-  <li><a href=""><i class="fa fa-laptop" aria-hidden="true"></i> Laptop</a>
-  </li>
-</ul>
-</div>
+                <?=category::widget() ?> 
 </div>
 </div>
 <div class="col-md-9">
@@ -272,14 +109,7 @@ AppAsset::register($this);
 <div class="wrapp">
   <div class="container">
     <div class="col-md-9 content-left">
-      <div class="slideshow">
-        <div class="slideanh owl-theme ">
-          <div class="slide"><a href=""><img src="image/slide1.png" alt=""></a></div>
-          <div class="slide"><a href=""><img src="image/slide2.png" alt=""></a></div>
-          <div class="slide"><a href=""><img src="image/slide3.png" alt=""></a></div>
-          <div class="slide"><a href=""><img src="image/slide4.png" alt=""></a></div>
-        </div>
-      </div>
+     <?=slide::widget()?>
       <?= $content ?>
 </div>
 
@@ -326,37 +156,37 @@ AppAsset::register($this);
     <div class="camket-content">
       <ul>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">1</span>
           <span   class="name-camket">Sản phẩm chính hãng</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">2</span>
           <span  class="name-camket"> Bảo hành chính hãng</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">3</span>
           <span class="name-camket">Tư vấn tin cậy</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">4</span>
           <span class="name-camket">Giá cả cạnh tranh</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">5</span>
           <span class="name-camket">Mua sắm dễ dàng</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span  class="star">6</span>
           <span class="name-camket">Phục vụ chu đáo</span>
         </li>
         <li>
-          <img src="image/star.png" alt="">
+          <img src="<?php echo Yii::$app->urlManager->baseUrl ?>/image/star.png" alt="">
           <span class="star">7</span>
           <span class="name-camket"> Dịch vụ hoàn hảo</span>
         </li>
@@ -364,184 +194,10 @@ AppAsset::register($this);
     </div>
   </div>
   <div class="hot-product">
-    <div class="hot-product-title">
-      <h4>Sản phẩm Nổi bật</h4>
-    </div> 
-    <div class="hot-product-content">
-     <ul>
-       <li><a href="#">
-         <div class="inner-hot-product">
-           <div class="hot-product-img" >
-             <img src="image/hot.png" alt="">
-           </div>
-           <div class="hot-product-name" >
-            Hauwei P8 lite
-          </div>
-        </div>
-      </a></li>
-      <li><a href="#">
-       <div class="inner-hot-product">
-         <div class="hot-product-img" >
-           <img src="image/hot2.jpg" alt="">
-         </div>
-         <div class="hot-product-name" >
-          Iphone 6s plus
-        </div>
-      </div>
-    </a></li>
-    <li><a href="#">
-     <div class="inner-hot-product">
-       <div class="hot-product-img" >
-         <img src="image/hot3.png" alt="">
-       </div>
-       <div class="hot-product-name" >
-        Iphone 6 64gb
-      </div>
-    </div>
-  </a></li>
-  <li><a href="#">
-   <div class="inner-hot-product">
-     <div class="hot-product-img" >
-       <img src="image/hot4.png" alt="">
-     </div>
-     <div class="hot-product-name" >
-      HTC one A9
-    </div>
-  </div>
-</a></li>
-<li><a href="#">
- <div class="inner-hot-product">
-   <div class="hot-product-img" >
-     <img src="image/hot4.jpg" alt="">
-   </div>
-   <div class="hot-product-name" >
-    OPP R7 plus
-  </div>
+    <?=hotproducts::widget()?>
 </div>
-</a></li>
-</ul>
-</div>
-</div>
-<div class="news">
- <div class="news-title">
-   <h4>Khuyến mại</h4>
-   <a href="">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
- </div>
- <div class="hot-product-content">
-   <ul>
-     <li><a href="#">
-       <div class="inner-hot-product">
-         <div class="hot-product-img" >
-           <img src="image/tin1.jpg" alt="">
-         </div>
-         <div class="hot-product-name" >
-          Lorem ipsum dolor sit amet.
-        </div>
-      </div>
-    </a></li>
-    <li><a href="#">
-     <div class="inner-hot-product">
-       <div class="hot-product-img" >
-         <img src="image/tin1.jpg" alt="">
-       </div>
-       <div class="hot-product-name" >
-        Lorem ipsum dolor sit amet.
-      </div>
-    </div>
-  </a></li>
-  <li><a href="#">
-   <div class="inner-hot-product">
-     <div class="hot-product-img" >
-       <img src="image/tin3.jpg" alt="">
-     </div>
-     <div class="hot-product-name" >
-      Lorem ipsum dolor sit amet.
-    </div>
-  </div>
-</a></li>
-<li><a href="#">
- <div class="inner-hot-product">
-   <div class="hot-product-img" >
-     <img src="image/tin4.jpg" alt="">
-   </div>
-   <div class="hot-product-name" >
-    Lorem ipsum dolor sit amet.
-  </div>
-</div>
-</a></li>
-<li><a href="#">
- <div class="inner-hot-product">
-   <div class="hot-product-img" >
-     <img src="image/tin5.jpg" alt="">
-   </div>
-   <div class="hot-product-name" >
-    Lorem ipsum dolor sit amet.
-  </div>
-</div>
-</a></li>
-</ul>
-</div>
-</div>
-<div class="news">
- <div class="news-title">
-   <h4>Tin tức</h4>
-   <a href="">Xem thêm <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
- </div>
- <div class="hot-product-content">
-   <ul>
-     <li><a href="#">
-       <div class="inner-hot-product">
-         <div class="hot-product-img" >
-           <img src="image/tin1.jpg" alt="">
-         </div>
-         <div class="hot-product-name" >
-          Lorem ipsum dolor sit amet.
-        </div>
-      </div>
-    </a></li>
-    <li><a href="#">
-     <div class="inner-hot-product">
-       <div class="hot-product-img" >
-         <img src="image/tin1.jpg" alt="">
-       </div>
-       <div class="hot-product-name" >
-        Lorem ipsum dolor sit amet.
-      </div>
-    </div>
-  </a></li>
-  <li><a href="#">
-   <div class="inner-hot-product">
-     <div class="hot-product-img" >
-       <img src="image/tin3.jpg" alt="">
-     </div>
-     <div class="hot-product-name" >
-      Lorem ipsum dolor sit amet.
-    </div>
-  </div>
-</a></li>
-<li><a href="#">
- <div class="inner-hot-product">
-   <div class="hot-product-img" >
-     <img src="image/tin4.jpg" alt="">
-   </div>
-   <div class="hot-product-name" >
-    Lorem ipsum dolor sit amet.
-  </div>
-</div>
-</a></li>
-<li><a href="#">
- <div class="inner-hot-product">
-   <div class="hot-product-img" >
-     <img src="image/tin5.jpg" alt="">
-   </div>
-   <div class="hot-product-name" >
-    Lorem ipsum dolor sit amet.
-  </div>
-</div>
-</a></li>
-</ul>
-</div>
-</div>
+
+<?=newss::widget() ?>
 </div>
 </div>
 
@@ -562,7 +218,22 @@ AppAsset::register($this);
   </div>
   </div>
 </footer>
-
+<div class="modal fade bs-example-modal-sm" id="modal-add-cat" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+           <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Đặt hàng</h4>
+      </div>
+      <div class="modal-body">
+        <span>Đặt hàng thành công sản phẩm:</span> <span id="name-pro-add-cart"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+  </div>
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>

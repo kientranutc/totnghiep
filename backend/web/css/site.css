@@ -1,13 +1,41 @@
 *{
     border: none !important;
     border-radius: 0px;
+
+}
+#modal-content{
+    width: 100%;
+    overflow: hidden;
+
+}
+
+input { padding:5px; border:1px solid #999; border-radius:4px; -moz-border-radius:4px; -web-kit-border-radius:4px; -khtml-border-radius:4px; 
+margin-bottom: 5px;
+width: 31%;
 }
 html,
 body {
     height: 100%;
     background: #ccc !important;
 }
-
+.add_field_button {
+    padding: 9px 10px;
+    background: #2E8965;
+    color: #fff;
+    text-decoration: none;
+}
+.tab-content > .active {
+    display: block;
+    margin-top: 21px;
+}
+.add_field_button:hover
+{
+    text-decoration: none;
+    color: #fff;
+}
+#imageinput {
+    margin-top: 15px;
+}
 .wrap {
     min-height: 100%;
     height: auto;
@@ -258,4 +286,81 @@ a#login {
 }
 thead{
     background: #6AF874;
+}
+.wrapper{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+        margin-top: 35px;
+}
+.wrapper>.left{
+   /* width: 17%;*/
+    padding:0px 0px 0px 10px;
+    margin-top: 35px;
+}
+.wrapper>.right{
+    width: 100%;
+    padding-right: 10px;
+       /* margin-left: 18%;*/
+}
+.wrapper>.left, .wrapper>.right{
+    float: left;
+}
+.panel-group .panel + .panel {
+  margin-top: 0px !important;
+}
+.panel-heading .accordion-toggle:after {
+    position: absolute;
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    right: 0px; 
+    margin-top: -10px;
+     /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    position: absolute;
+      right: 0px; 
+  
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.navbar-inverse {
+    background-color: #438EB9;
+    border-color: #080808;
+
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #2E8965;
+}
+.navbar-inverse .navbar-nav > li > a {
+     color: #fff;
+    background-color: #2E8965;
+}
+span.glyphicon.glyphicon-bell {
+    font-size: 20px;
+    padding: 0px 10px;
+    vertical-align: middle;
+}
+span#notifcation {
+    position: absolute;
+    top: 2px;
+    right: 12px;
+    background: rgba(0,0,0,0.5);
+    font-size: 13px;
+    padding: 0px 6px;
+    border-radius: 100%;
+}
+.navbar-inverse .btn-link {
+    color: #fff;
+}
+.modal-content {
+      background: #ccc;
+    overflow: hidden;
 }
